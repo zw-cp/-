@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="CSS/basics.css">
+    <link rel="stylesheet" href="CSS/index.css">
+    <script src="jq/jquery-1.12.4.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 头部部分 -->
+    <header>
+        <!-- 头部logo部分 -->
+        <div class="logo">
+            <img src="images/logo.png" alt="">
+        </div>
+
+        <!-- 头部标题内容 -->
+        <div class="title">
+            <h1>我炸了小组</h1>
+        </div>
+
+        <!-- 头部音效部分 -->
+        <div class="music">
+            <img src="images/trumpet.png" alt="">
+            <audio src="Schnappi.mp3" id="audio" loop="loop" autoplay="autoplay"></audio>
+        </div>
+    </header>
+
+    <!-- 轮播图部分 -->
+    <section>
+        <ul class="slide">
+            <li class="item">
+                <img src="images/slides/1.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/slides/2.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/slides/3.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/slides/4.jpg" alt="">
+            </li>
+        </ul>
+    </section>
+
+    <!-- 登陆注册部分 -->
+    <footer>
+        <div class="box">
+            <form action="">
+                <!-- 登陆 -->
+                <div class="box-content">
+                    <label for="username">
+                        <span>用户名</span>
+                        <input type="text" id="username">
+                    </label>
+                </div>
+
+                <!-- 注册 -->
+                <div class="box-content">
+                    <label for="password">
+                        <span>密码</span>
+                        <input type="password" id="password">
+                    </label>
+                </div>
+
+                <!-- 按钮部分 -->
+                <div class="box-btn">
+                    <button>登陆</button>
+                    <button>注册</button>
+                    <button>忘记密码</button>
+                </div>
+            </form>
+        </div>
+    </footer>
+
+    <script>
+        // 轮播图实现
+        $(function () {
+            var index = 0;
+            var a = $(".slide li").length;
+            setInterval(function () {
+                index++;
+                if (index === a) {
+                    index = 0;
+                }
+                $(".slide li").eq(index).addClass("item").siblings(".item").removeClass("item")
+            }, 2000)
+        })
+        //音频开关事件
+        $(".music").click(function () {
+            var music = document.getElementById("audio");
+            console.log(music);
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        })
+
+        // 用户名正则表达式
+        function checkName(name) {
+            var re = /^[a-zA-Z][a-zA-Z0-9]{8,}$/;
+            if (re.test(name)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        $("#username").blur(function () {
+            if ($(this).val().length != 0) {
+                if (checkName($(this).val())) {
+                    alert("可使用的用户名");
+                } else {
+                    alert("不可用");
+                }
+            }
+        })
+    </script>
+
+    <!-- <iframe src="Schnappi.mp3" frameborder="0" seamless="seamless"></iframe> -->
+</body>
+
+</html>
