@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/basics.css">
+    <link rel="stylesheet" href="CSS/deal.css">
+    <script src="jq/jquery-1.12.4.js"></script>
+    <title>发牌页</title>
+</head>
+
+<body>
+    <!-- 头部内容 -->
+    <header>
+        <div class="header-box">
+            <div class="logo">
+                <a href="start.html">
+                    <img src="images/timg.jpg" alt="">
+                </a>
+            </div>
+
+            <div class="header-text">
+                <h1>发牌页</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主体内容部分 -->
+    <section>
+        <div class="box">
+            <h2>1</h2>
+        </div>
+
+        <div class="main">
+
+        </div>
+
+        <div class="btn">
+            <button id="show">显示身份</button>
+            <button id="next">下一个</button>
+        </div>
+    </section>
+
+    <script>
+        var getStasut = localStorage.getItem("status");
+        getStasut = JSON.parse(getStasut);
+        console.log(getStasut)
+        var a = 0   ;
+        var i = 0
+        var b = false;
+        // 显示身份按钮事件
+        $("#show").click(function () {
+            // console.log(typeof(getStasut[i]))
+            switch (getStasut[i]) {
+                case "village":
+                    $(".main").css({
+                        "backgroundImage": "url(../images/village.jpg)",
+                        "background-size": "100%"
+                    })
+                    // console.log("cun")
+                    break;
+
+                case "wolf":
+                    $(".main").css({
+                        "backgroundImage": "url(../images/wolf.jpg)",
+                        "background-size": "100%"
+                    })
+                    break;
+
+                case "prediction":
+                    // alert("预言家")
+                    $(".main").css({
+                        "backgroundImage": "url(../images/prediction.jpg)",
+                        "background-size": "100%"
+                    })
+                    break;
+
+                case "witch":
+                    $(".main").css({
+                        "backgroundImage": "url(../images/witch.jpg)",
+                        "background-size": "100%"
+                    })
+                    break;
+
+                case "guard":
+                    $(".main").css({
+                        "backgroundImage": "url(../images/guard.jpg)",
+                        "background-size": "100%"
+                    })
+                    break;
+            }
+            if (a === getStasut.length-1) {
+                $("#next").removeAttr("disabled")
+                b = true;
+                console.log(b)
+            }
+        })
+
+        // 下一个按钮事件
+        $("#next").click(function () {
+           
+            console.log(a)
+            if (a < getStasut.length) {
+                if(a < getStasut.length-1){
+                    a++
+                }
+                $(".box h2").text(a+1);
+                console.log(b)
+                if (a === getStasut.length-1) {
+                    $(this).text("游戏开始");
+                    $(this).attr("disabled", true);
+                    console.log(b)
+                    if (b) {
+                        window.location.href = "begin.html";
+                    }
+                }
+            }
+            $(".main").css({
+                "backgroundImage": "url(../images/bg.jpg)",
+            })
+            if (i < getStasut.length) {
+                i++;
+                if (i === getStasut.length) {
+                    i = 0;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

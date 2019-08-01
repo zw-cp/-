@@ -24,7 +24,7 @@ header {
 }
 
 .box {
-    margin: 15rem 0rem;
+    margin-top: 15rem;
 }
 
 section {
@@ -52,10 +52,27 @@ section {
 
 .box-content {
     width: 40rem;
-    margin: 5rem auto;
+    height: 10rem;
+    margin: 1rem auto;
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
 }
+
+.main p {
+    text-align: center;
+    height: 5.75rem;
+    line-height: 5.75rem;
+}
+
+.correct {
+    color: green;
+}
+
+.worng {
+    color: red;
+}
+
 
 .box input {
     width: 30rem;

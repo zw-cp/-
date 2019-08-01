@@ -1,0 +1,16 @@
+.main .main-btn {
+    width: 40.25rem;
+    margin-left: 5.9375rem;
+}
+
+#btn-show {
+    width: 14.125rem;
+}
+
+.hide {
+    opacity: 0;
+}
+
+.show {
+    opacity: 1;
+}

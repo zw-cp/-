@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/basics.css">
+    <link rel="stylesheet" href="CSS/deal.css">
+    <link rel="stylesheet" href="CSS/begin.css">
+    <script src="jq/jquery-1.12.4.js"></script>
+    <title>发牌页</title>
+</head>
+
+<body>
+    <!-- 头部内容 -->
+    <header>
+        <div class="header-box">
+            <div class="logo">
+                <a href="start.html">
+                    <img src="images/timg.jpg" alt="">
+                </a>
+            </div>
+
+            <div class="header-text">
+                <h1>发牌页</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主体内容部分 -->
+    <section>
+        <div class="section-box">
+            <div class="section-content" id="day">
+                <div class="triangle">
+
+                </div>
+
+                <h2>第一天</h2>
+            </div>
+
+            <dl class="nav">
+                <dt class="nav-item">
+                    <div class="section-content section-main">
+                        <div class="triangle">
+
+                        </div>
+
+                        <h2>晚上</h2>
+                    </div>
+                </dt>
+                <dd class="nva-item-child">
+                    <button>狼人杀人</button>
+                </dd>
+                <dd class="nva-item-child">
+                    <button>预言家查看</button>
+                </dd>
+                <dd class="nva-item-child">
+                    <button>女巫选择</button>
+                </dd>
+                <dd class="nva-item-child">
+                    <button>守卫选择</button>
+                </dd>
+            </dl>
+
+            <dl class="nav">
+                <dt class="nav-item">
+                    <div class="section-content section-main">
+                        <div class="triangle">
+
+                        </div>
+
+                        <h2>白天</h2>
+                    </div>
+                </dt>
+                <dd class="nva-item-child"><button>竞选警长</button></dd>
+                <dd class="nva-item-child"><button>警教选择</button></dd>
+                <dd class="nva-item-child"><button>警长发言</button></dd>
+                <dd class="nva-item-child"><button>所有人发言</button></dd>
+                <dd class="nva-item-child"><button>投票</button></dd>
+            </dl>
+        </div>
+    </section>
+
+    <footer>
+        <button>法官查看</button>
+    </footer>
+
+    <script>
+        var oKey = true;
+        $("#day").click(function () {
+            if (oKey) {
+                $(".nav").hide();
+                oKey = false;
+            } else {
+                $(".nav").show();
+                oKey = true;
+            }
+        })
+
+        $(".section-main").click(function () {
+            $(this).parent().nextAll().toggle();
+        })
+        var a = 0;
+        $(".nva-item-child button").click(function () {
+            var b = $(this).parent().index();
+            var oBtn = $(".nva-item-child").children();
+            // console.log(b);
+            // if (a === b) {
+            //     a++;
+            //     alert(1)
+            // } else {
+            //     alert(2)
+            // }
+            console.log(oBtn)
+            console.log(oBtn.length);
+            if (a < oBtn.length) {
+                if ($(this).text() === $(oBtn[a]).text()) {
+                    $(this).css("background-color", "red");
+                    a++;
+                    $(this).attr("disabled",true)
+                    alert(1)
+                } else {
+                    alert(2)
+                    // $(".nva-item-child button").attr("disabled",true)
+                }
+
+                if(a === oBtn.length){
+                    a = 0;
+                    $(".nva-item-child button").css("background-color", "white");
+                    $(".nva-item-child button").removeAttr('disabled')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
